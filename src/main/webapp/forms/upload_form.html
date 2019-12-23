@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Upload Form</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css">
+    </head>
+    <body style="padding: 15px">
+        <form class="pure-form" method="post" action="../servlet/upload" enctype="multipart/form-data">
+            <fieldset>
+                <legend>Form Post（上傳檔案）</legend>
+                <input type="file" name="uploadfile"><p/>
+                <input type="file" name="uploadfile"><p/>
+                <input type="file" name="uploadfile"><p/>
+                說明：<input type="text" name="desc" value="Sample"><p/>
+                <button type="submit" class="pure-button pure-button-primary">Upload</button>
+            </fieldset>
+        </form>
+    </body>
+</html>

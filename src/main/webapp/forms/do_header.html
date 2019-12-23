@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Do Header</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script>
+            function getHeader() {
+                $.ajax({
+                    type: 'Head',
+                    url: '../servlet/download?fn=car.jpg',
+                    success: function (data, status, xhr) {
+                        var response = "<b>data:</b> " + data + "<br/>";
+                        response += "<b>status:</b> " + status + "<br/>";
+                        response += "<b>headers:</b> <br/>";
+                        $.each(xhr.getAllResponseHeaders().split("\n"),
+                                function (i, value) {
+                                    response += value + " <br/>";
+                                });
+                        $('#header-content').html(response)
+                    },
+                    error: function (xhr, status, error) {
+                        $('#header-content').html('<span style=\'color:red;\'>' + error + '</span>')
+                    }
+                });
+            }
+            
+            function download() {
+                window.location.href = '../servlet/download?fn=car.jpg';
+            }
+            
+            function viewImage() {
+                $('#image').attr('src', '../servlet/download?fn=car.jpg');
+            }
+        </script>
+    </head>
+    <body style="padding: 15px">
+        <button class="pure-button pure-button-primary" onclick="getHeader()">Header request</button>
+        <button class="pure-button pure-button-primary" onclick="download()">Download</button>
+        <button class="pure-button pure-button-primary" onclick="viewImage()">View image</button>
+        <br/><br/>
+        <div id="header-content"></div>
+        <img id="image">
+    </body>
+</html>
