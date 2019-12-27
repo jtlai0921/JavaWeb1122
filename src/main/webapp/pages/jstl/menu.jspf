@@ -1,0 +1,7 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<div class="pure-menu pure-menu-horizontal">
+    <a href="jdbc_product.jsp" class="pure-menu-heading pure-menu-link">Product</a>
+    <a href="jdbc_customer.jsp" class="pure-menu-heading pure-menu-link">Customer</a>
+    <a href="jdbc_pu_view.jsp" class="pure-menu-heading pure-menu-link">PU View</a>
+</div>
