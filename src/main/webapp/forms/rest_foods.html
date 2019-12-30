@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>REST Foods</title>
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+        <script>
+            $(function () {
+                $("#queryBtn").click(function () {
+                    query();
+                });
+                $("#getBtn").click(function () {
+                    get();
+                });
+                $("#addBtn").click(function () {
+                    add();
+                });
+                $("#updateBtn").click(function () {
+                    update();
+                });
+                $("#deleteBtn").click(function () {
+                    del();
+                });
+                
+                $(document).on("click", "#foodstable tbody tr", function () {
+                    var id   = $(this).find('td:eq(0)').text();
+                    var value = $(this).find('td:eq(1)').text();
+                    $('#id').val(id);
+                    $('#value').val(value);
+                });
+                
+            });
+            
+            function displaytable(result) {
+                result = JSON.parse(result); // 轉 json 物件
+                console.log(result);
+                $("#foodstable").find('tbody').empty();
+                $.each(result, function (i, value) {
+                    $("#foodstable").find('tbody')
+                            .append($('<tr>')
+                                    .append($('<td>').append(i))
+                                    .append($('<td>').append(value))
+                                    );
+                });
+            }
+            
+            function query() {
+                var url = '../rest/foods';
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    success: function (result) {
+                        console.log(result);
+                        $('#result').text(result);
+                        displaytable(result);
+                    }
+                });
+            }
+            
+            function get() {
+                var id = $('#id').val();
+                var url = '../rest/foods/' + id;
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    success: function (result) {
+                        console.log(result);
+                        $('#result').text(result);
+                    }
+                });
+            }
+            
+            function add() {
+                var url = '../rest/foods';
+                var data = $('form').serialize();
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: data,
+                    success: function (result) {
+                        console.log(result);
+                        $('#result').text(result);
+                        query();
+                    }
+                });
+            }
+            
+            function update() {
+                var id = $('#id').val();
+                var url = '../rest/foods/' + id
+                var data = $('form').serialize();
+                $.ajax({
+                    url: url,
+                    type: 'PUT',
+                    data: data,
+                    success: function (result) {
+                        console.log(result);
+                        $('#result').text(result);
+                        query();
+                    }
+                });
+            }
+            
+            function del() {
+                var id = $('#id').val();
+                var url = '../rest/foods/' + id
+                $.ajax({
+                    url: url,
+                    type: 'DELETE',
+                    success: function (result) {
+                        console.log(result);
+                        $('#result').text(result);
+                        query();
+                    }
+                });
+            }
+        </script>
+    </head>
+    <body style="padding: 15px">
+        <form class="pure-form">
+            <fieldset>
+                <legend>JAS-RX Jersey (SPA)</legend>
+                id : <input type="text" id="id" name="id" size="3">
+                品名 : <input type="text" id="value" name="value"><p />
+                <button type="button" class="pure-button pure-button-primary" id="queryBtn">Query</button>
+                <button type="button" class="pure-button pure-button-primary" id="getBtn">Get</button>
+                <button type="button" class="pure-button pure-button-primary" id="addBtn">Add</button>
+                <button type="button" class="pure-button pure-button-primary" id="updateBtn">Update</button>
+                <button type="button" class="pure-button pure-button-primary" id="deleteBtn">Delete</button>
+            </fieldset>
+        </form>
+        <div id="result"></div><p />
+        <table id="foodstable" class="pure-table pure-table-bordered">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>品名</th>
+                </tr>
+            </thead>
+            <tbody>
+                    
+            </tbody>
+        </table>
+    </body>
+</html>
