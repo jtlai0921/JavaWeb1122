@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-  <persistence-unit name="demo" transaction-type="JTA">
-    <exclude-unlisted-classes>false</exclude-unlisted-classes>
-    <properties>
-      <property name="javax.persistence.schema-generation.database.action" value="create"/>
-    </properties>
-  </persistence-unit>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence  http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+    <persistence-unit name="demo" transaction-type="RESOURCE_LOCAL">
+        <class>com.study.web.jpa.entity.User</class>
+        <properties>
+            <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
+            <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
+            <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/demo"/>
+            <property name="javax.persistence.jdbc.user" value="app"/>
+            <property name="javax.persistence.jdbc.password" value="app"/>
+        </properties>
+    </persistence-unit>
 </persistence>
