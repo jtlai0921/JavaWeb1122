@@ -8,7 +8,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 public class JPATestQuery {
-
+    
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("demo");
         EntityManager em = emf.createEntityManager();
@@ -23,6 +23,18 @@ public class JPATestQuery {
         Query query = em.createQuery(sql);
         query.setParameter("age", 30);
         System.out.println(query.getResultList());
+        //---------------------------------------------------------------
+        List list3 = em.createNamedQuery("User.findAll").getResultList();
+        System.out.println(list3);
+        
+        Query query2 = em.createNamedQuery("User.findByName");
+        query2.setParameter("name", "Vin");
+        System.out.println(query2.getResultList());
+        
+        Query query3 = em.createNamedQuery("User.findByAge");
+        query3.setParameter("age", 30);
+        System.out.println(query3.getResultList());
+
         
     }
 }
