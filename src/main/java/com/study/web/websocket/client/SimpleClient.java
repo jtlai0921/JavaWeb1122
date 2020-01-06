@@ -17,7 +17,7 @@ public class SimpleClient {
         WebSocketContainer container = ContainerProvider.getWebSocketContainer();
         Session session = container.connectToServer(new SimpleClient(), uri);
         
-        Thread.sleep(10_000);
+        Thread.sleep(5_000);
         
         session.close();
     }
