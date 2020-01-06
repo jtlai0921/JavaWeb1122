@@ -15,7 +15,6 @@
     </properties>
     
     <dependencies>
-        
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
@@ -42,7 +41,7 @@
             <version>1.2.4</version>
         </dependency>
         
-        <!-- https://mvnrepository.com/artifact/org.apache.derby/derbyclient -->
+        <!-- Derby -->
         <dependency>
             <groupId>org.apache.derby</groupId>
             <artifactId>derbyclient</artifactId>
@@ -62,7 +61,13 @@
             <artifactId>eclipselink</artifactId>
             <version>2.7.5</version>
         </dependency>
-
+        
+        <!-- WebSocket -->
+        <dependency>
+            <groupId>org.glassfish.tyrus.bundles</groupId>
+            <artifactId>tyrus-standalone-client-jdk</artifactId>
+            <version>1.13</version>
+        </dependency>
         
     </dependencies>
 
