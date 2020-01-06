@@ -2,10 +2,13 @@ window.onload = function() {
     console.log('Play WebSocket');
     var context_path = '/JavaWeb1122_T';
     var websocket_path = '/websocket/server';
-    var url = 'ws://' + window.location.hostname + ':' + window.location.port + context_path + websocket_path;
+    var room_no = '/101';
+    var url = 'ws://' + window.location.hostname + ':' + window.location.port + context_path + websocket_path + room_no;
     var webSocket;
     
     openBtn.addEventListener("click", function () {
+        room_no = '/' + roomNo.value;
+        url = 'ws://' + window.location.hostname + ':' + window.location.port + context_path + websocket_path + room_no;    
         setWebSocket();
     });
     
@@ -54,4 +57,3 @@ window.onload = function() {
     setWebSocket();
     
 }
-
