@@ -13,7 +13,7 @@
         <h1><my:greet user="${param.name}" /></h1> <!--網址後面可帶入參數 ?name=anita -->
         <h1><my:required /></h1>
         <my:mark search="h">
-            she sell sea shell on the sea shore
+            dfgrgfdefsdfdf
         </my:mark>
         <p />
         <my:switch conditionValue="1">
