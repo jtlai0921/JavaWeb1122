@@ -7,12 +7,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-        
         <h1>
-            <my:loop count="${param.count}">
-                恭喜你
-            </my:loop>
-            CopyRight : xxx.xxx    
+            <my:add x="1" y="3" z="9" />
         </h1>
     </body>
 </html>
