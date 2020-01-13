@@ -35,4 +35,27 @@
       <rtexprvalue>true</rtexprvalue>
     </attribute>
   </tag>
+  
+  <tag>
+      <name>loop</name>
+      <tag-class>com.study.web.mytag.LoopTag</tag-class>
+      <body-content>JSP</body-content>
+      <attribute>
+      <name>count</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  
+  <tag>
+      <name>mark</name>
+      <tag-class>com.study.web.mytag.MarkTag</tag-class>
+      <body-content>JSP</body-content>
+      <attribute>
+      <name>key</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  
 </taglib>
